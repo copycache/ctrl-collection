@@ -41,7 +41,6 @@ export default {
   methods: {
     async fetchBestsellers() {
       try {
-        // Simulate an API call to fetch bestsellers
         const bestsellers = [
           {
             name: "Nuit Dorée",
@@ -79,11 +78,11 @@ export default {
 
 <template>
   <div class="min-h-screen">
-    <div class="mx-auto max-w-container h-screen px-5 pt-30 pb-20">
-      <div class="grid h-full grid-cols-4 gap-4">
-        <div class="col-span-3">
+    <div class="mx-auto max-w-container min-h-screen lg:h-screen px-4 sm:px-5 pt-20 sm:pt-24 lg:pt-30 pb-10 sm:pb-16 lg:pb-20">
+      <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:h-full">
+        <div class="lg:col-span-3">
           <div
-            class="relative h-full col-span-8 overflow-hidden rounded-3xl p-12 bg-cover bg-center"
+            class="relative min-h-[520px] sm:min-h-[560px] lg:h-full overflow-hidden rounded-3xl p-6 sm:p-10 lg:p-12 bg-cover bg-center"
           >
             <img
               src="https://images.unsplash.com/photo-1615634260167-c8cdede054de"
@@ -93,9 +92,9 @@ export default {
             <!-- Dark overlay for readability -->
             <div class="absolute inset-0 bg-black/75" />
 
-            <div class="absolute top-6 left-6 z-10">
+            <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
               <Badge
-                class="text-[11px] tracking-widest uppercase px-3 py-1 rounded-full"
+                class="text-[10px] sm:text-[11px] tracking-widest uppercase px-3 py-1 rounded-full"
               >
                 Featured Scent
               </Badge>
@@ -103,29 +102,29 @@ export default {
 
             <Badge
               variant="secondary"
-              class="absolute top-6 right-6 text-xs flex items-center gap-2 z-10 bg-black/40 text-white border-0 px-3 py-1.5 rounded-full"
+              class="absolute top-4 right-4 sm:top-6 sm:right-6 text-xs flex items-center gap-2 z-10 bg-black/40 text-white border-0 px-3 py-1.5 rounded-full"
             >
               <Icon icon="lucide:star" class="w-3.5 h-3.5 text-[#B8935F]" />
               <span class="font-semibold">4.9</span>
               <span class="text-muted-foreground">(2.4k)</span>
             </Badge>
 
-            <div class="absolute bottom-8 left-12 max-w-xl z-10">
+            <div class="absolute inset-x-4 bottom-20 sm:inset-x-6 sm:bottom-24 lg:left-12 lg:right-auto lg:bottom-8 max-w-xl z-10">
               <p class="text-xs text-[#B8935F] font-semibold tracking-widest">
                 EAU DE PARFUM · 100ML
               </p>
-              <h1 class="text-6xl font-serif text-white tracking-wide mt-2">
+              <h1 class="text-3xl sm:text-4xl lg:text-6xl font-serif text-white tracking-wide mt-2">
                 Nuit Dorée
               </h1>
 
               <p
-                class="text-md mt-4 text-muted-foreground leading-relaxed max-w-md"
+                class="text-sm sm:text-md mt-3 sm:mt-4 text-muted-foreground leading-relaxed max-w-md"
               >
                 A deep, intoxicating fusion of amber, oud &amp; sandalwood. Rich
                 warmth that wraps around you like velvet.
               </p>
 
-              <div class="flex items-center gap-5 mt-8">
+              <div class="flex flex-wrap items-center gap-4 sm:gap-5 mt-6 sm:mt-8">
                 <Button
                   size="lg"
                 >
@@ -140,7 +139,7 @@ export default {
             </div>
 
             <div
-              class="absolute bottom-8 right-10 text-4xl font-serif font-light text-white tracking-wide z-10"
+              class="absolute bottom-6 right-4 sm:bottom-8 sm:right-10 text-2xl sm:text-3xl lg:text-4xl font-serif font-light text-white tracking-wide z-10"
             >
               $195
             </div>
@@ -149,7 +148,7 @@ export default {
 
         <!-- Right side -->
         <div>
-          <Card class="relative h-full rounded-3xl">
+          <Card class="relative lg:h-full rounded-3xl">
             <CardHeader>
               <CardTitle
                 class="text-xs font-semibold uppercase tracking-wider text-[#B8935F]"
@@ -165,7 +164,7 @@ export default {
               <CardContent class="flex flex-col gap-5 mt-4 px-0">
                 <template v-for="(item, index) in bestsellers" :key="item.name">
                   <div class="flex items-center gap-4">
-                    <Skeleton class="w-16 h-16 rounded-lg shrink-0" />
+                    <Skeleton class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg shrink-0" />
 
                     <div class="flex-1 min-w-0">
                       <p class="text-sm font-semibold truncate">
