@@ -1,75 +1,38 @@
-# Nuxt Minimal Starter
+<h2>🛠 Getting Started</h2>
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
-
-## Setup
-
-Make sure to install dependencies:
+1. Clone the project and install dependencies:
 
 ```bash
-# npm
+git clone https://github.com/copycache/ctrl-collection.git
+cd ctrl-collection
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+<hr>
 
-Start the development server on `http://localhost:3000`:
+<h2>⚙️ Setup Dependencies</h2>
 
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
+2. Run the following command to install and build the project dependencies:
 
 ```bash
-# npm
+npm run install
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+<hr>
 
-```bash
-# npm
-npm run preview
+<h2>📁 Project Configuration (Optional if the project has a server side)</h2>
 
-# pnpm
-pnpm preview
+<p><em>(Optional if your project does not require server-side environment variables)</em></p>
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
+```text
+my-project/
+├─ public/
+├─ src/
+│  ├─ components/
+│  ├─ pages/
+│  ├─ layouts/
+├─ package.json
+├─ nuxt.config.mjs
+└─ .env
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
