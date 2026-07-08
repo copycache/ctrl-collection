@@ -25,6 +25,8 @@ export default defineNuxtConfig({
     componentDir: '@/components/ui'
   },
   colorMode: {
+    preference: 'dark',
+    fallback: 'dark',
     classSuffix: ''
   }
 })

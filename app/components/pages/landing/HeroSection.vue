@@ -159,7 +159,7 @@ export default {
                 >
                   <div>
                     <p
-                      class="shrink-0 font-['Cormorant_Garamond',_serif] text-lg tracking-wide text-white"
+                      class="shrink-0 font-['Cormorant_Garamond',_serif] text-lg text-primary tracking-wide"
                     >
                       Bestsellers
                     </p>

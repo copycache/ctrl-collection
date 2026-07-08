@@ -154,7 +154,7 @@ export default {
             TOP RATED
           </p>
           <h1
-            class="text-2xl sm:text-3xl lg:text-4xl font-serif text-white tracking-wide mt-2"
+            class="text-2xl sm:text-3xl lg:text-4xl font-serif tracking-wide mt-2"
           >
             Best Sellers
           </h1>
@@ -201,10 +201,10 @@ export default {
                 </CardDescription>
  
                 <div class="flex items-center justify-between mt-3">
-                  <span class="text-white font-medium">{{
+                  <span class="font-medium">{{
                     product.price
                   }}</span>
-                  <span class="flex items-center gap-1 text-sm text-white">
+                  <span class="flex items-center gap-1 text-sm">
                     <Icon
                       icon="lucide:star"
                       class="w-3.5 h-3.5 text-[#B8935F]"
@@ -222,10 +222,10 @@ export default {
         </CarouselContent>
  
         <CarouselPrevious
-          class="left-0 h-9 w-9 border border-white/15 bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white"
+          class="left-0 h-9 w-9 border border-white/15 bg-black/60 backdrop-blur-sm hover:bg-black/80"
         />
         <CarouselNext
-          class="right-0 h-9 w-9 border border-white/15 bg-black/60 text-white backdrop-blur-sm hover:bg-black/80 hover:text-white"
+          class="right-0 h-9 w-9 border border-white/15 bg-black/60 backdrop-blur-sm hover:bg-black/80"
         />
       </Carousel>
     </div>
