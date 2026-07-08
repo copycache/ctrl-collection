@@ -60,12 +60,6 @@ export default {
             price: 210,
             rating: 4.7,
           },
-          {
-            name: "Lumière Blanche",
-            notes: "Iris · Jasmine · Vanilla",
-            price: 175,
-            rating: 4.6,
-          },
         ];
         this.bestsellers = bestsellers;
       } catch (error) {
@@ -78,7 +72,9 @@ export default {
 
 <template>
   <div class="min-h-screen">
-    <div class="mx-auto max-w-container min-h-screen lg:h-screen px-4 sm:px-5 pt-20 sm:pt-24 lg:pt-30 pb-10 sm:pb-16 lg:pb-20">
+    <div
+      class="mx-auto max-w-container min-h-screen lg:h-screen px-4 sm:px-5 pt-30 pb-10 sm:pb-16 lg:pb-20"
+    >
       <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 lg:h-full">
         <div class="lg:col-span-3">
           <div
@@ -109,11 +105,15 @@ export default {
               <span class="text-muted-foreground">(2.4k)</span>
             </Badge>
 
-            <div class="absolute inset-x-4 bottom-20 sm:inset-x-6 sm:bottom-24 lg:left-12 lg:right-auto lg:bottom-8 max-w-xl z-10">
+            <div
+              class="absolute inset-x-4 bottom-20 sm:inset-x-6 sm:bottom-24 lg:left-12 lg:right-auto lg:bottom-8 max-w-xl z-10"
+            >
               <p class="text-xs text-[#B8935F] font-semibold tracking-widest">
                 EAU DE PARFUM · 100ML
               </p>
-              <h1 class="text-3xl sm:text-4xl lg:text-6xl font-serif text-white tracking-wide mt-2">
+              <h1
+                class="text-3xl sm:text-4xl lg:text-6xl font-serif text-white tracking-wide mt-2"
+              >
                 Nuit Dorée
               </h1>
 
@@ -124,12 +124,10 @@ export default {
                 warmth that wraps around you like velvet.
               </p>
 
-              <div class="flex flex-wrap items-center gap-4 sm:gap-5 mt-6 sm:mt-8">
-                <Button
-                  size="lg"
-                >
-                  Add to Cart
-                </Button>
+              <div
+                class="flex flex-wrap items-center gap-4 sm:gap-5 mt-6 sm:mt-8"
+              >
+                <Button size="lg"> Add to Cart </Button>
 
                 <Button variant="link" class="text-muted-foreground">
                   View Details
@@ -147,24 +145,40 @@ export default {
         </div>
 
         <!-- Right side -->
-        <div>
-          <Card class="relative lg:h-full rounded-3xl">
+        <div class="col-span-1 row-span-2">
+          <Card class="relative rounded-3xl">
             <CardHeader>
               <CardTitle
                 class="text-xs font-semibold uppercase tracking-wider text-[#B8935F]"
               >
                 THIS SEASON
               </CardTitle>
-              <CardDescription
-                class="shrink-0 font-['Cormorant_Garamond',_serif] text-lg tracking-wide text-white"
-              >
-                Bestsellers
+              <CardDescription>
+                <div
+                  class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6"
+                >
+                  <div>
+                    <p
+                      class="shrink-0 font-['Cormorant_Garamond',_serif] text-lg tracking-wide text-white"
+                    >
+                      Bestsellers
+                    </p>
+                  </div>
+                  <Button
+                    variant="link"
+                    class="text-muted-foreground text-xs self-start sm:self-auto -ml-4 sm:ml-0"
+                  >
+                    View all
+                  </Button>
+                </div>
               </CardDescription>
 
               <CardContent class="flex flex-col gap-5 mt-4 px-0">
                 <template v-for="(item, index) in bestsellers" :key="item.name">
                   <div class="flex items-center gap-4">
-                    <Skeleton class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg shrink-0" />
+                    <Skeleton
+                      class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg shrink-0"
+                    />
 
                     <div class="flex-1 min-w-0">
                       <p class="text-sm font-semibold truncate">

@@ -1,10 +1,12 @@
 <script lang="ts">
 import HeroSection from "@/components/pages/landing/HeroSection.vue";
+import BestSellingSection from "@/components/pages/landing/BestSellingSection.vue";
 import SignatureCollectionSection from "@/components/pages/landing/SignatureCollectionSection.vue";
 
 export default {
   components: {
     HeroSection,
+    BestSellingSection,
     SignatureCollectionSection,
   },
   data() {
@@ -38,5 +40,6 @@ export default {
   <div>
     <HeroSection />
     <SignatureCollectionSection />
+    <BestSellingSection />
   </div>
 </template>
