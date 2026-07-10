@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { cart } from "@/components/pages/landing/store";
 
 export default {
   components: {
@@ -39,103 +40,106 @@ export default {
     return {
       products: [
         {
+          id: 1,
           rank: "#1 Best Seller",
           name: "Nuit Dorée",
           notes: "Oud · Amber · Sandalwood",
-          price: "$195",
+          price: "195",
           rating: "4.9",
           images: [
             "https://images.unsplash.com/photo-1615634260167-c8cdede054de",
-            "https://images.unsplash.com/photo-1541643600914-78b084683601",
-            "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
           ],
         },
         {
+          id: 2,
           rank: "#2 Best Seller",
           name: "Rose Ardente",
           notes: "Rose · Peach · Musk",
-          price: "$165",
+          price: "165",
           rating: "4.8",
           images: [
             "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-            "https://images.unsplash.com/photo-1585399000684-d2f72660f092",
-            "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
           ],
         },
         {
+          id: 3,
           rank: "#3 Best Seller",
           name: "Bois Sacré",
           notes: "Cedar · Vetiver · Smoke",
-          price: "$210",
+          price: "210",
           rating: "4.7",
           images: [
             "https://images.unsplash.com/photo-1541643600914-78b084683601",
-            "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
-            "https://images.unsplash.com/photo-1615634260167-c8cdede054de",
           ],
         },
         {
+          id: 4,
           rank: "Best Seller",
           name: "Lumière Blanche",
           notes: "Iris · Jasmine · Vanilla",
-          price: "$175",
+          price: "175",
           rating: "4.6",
           images: [
             "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
-            "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-            "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
           ],
         },
         {
+          id: 5,
           rank: "Best Seller",
           name: "Lumière Blanche",
           notes: "Iris · Jasmine · Vanilla",
-          price: "$175",
+          price: "175",
           rating: "4.6",
           images: [
             "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
-            "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-            "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
           ],
         },
         {
+          id: 6,
           rank: "Best Seller",
           name: "Lumière Blanche",
           notes: "Iris · Jasmine · Vanilla",
-          price: "$175",
+          price: "175",
           rating: "4.6",
           images: [
             "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
-            "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-            "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
           ],
         },
         {
+          id: 7,
           rank: "Best Seller",
           name: "Lumière Blanche",
           notes: "Iris · Jasmine · Vanilla",
-          price: "$175",
+          price: "175",
           rating: "4.6",
           images: [
             "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
-            "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-            "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
           ],
         },
         {
+          id: 8,
           rank: "Best Seller",
           name: "Lumière Blanche",
           notes: "Iris · Jasmine · Vanilla",
-          price: "$175",
+          price: "175",
           rating: "4.6",
           images: [
             "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539",
-            "https://images.unsplash.com/photo-1585386959984-a4155224a1ad",
-            "https://images.unsplash.com/photo-1523293182086-7651a899d37f",
           ],
         },
       ],
     };
+  },
+  methods: {
+    addToCart(product:any) {
+      cart.addToCart({
+        id: product.id,
+        name: product.name,
+        size: product.notes,
+        price: product.price,
+        image: product.images[0],
+      });
+    },
   },
 };
 </script>
@@ -178,32 +182,28 @@ export default {
               class="relative rounded-3xl border-none shadow-sm p-3 sm:p-4 h-full"
             >
               <CardHeader class="p-0">
-                <div
-                  class="relative rounded-2xl overflow-hidden aspect-square"
-                >
+                <div class="relative rounded-2xl overflow-hidden aspect-square">
                   <img
                     :src="product.images[0]"
                     class="absolute inset-0 w-full h-full object-cover"
                   />
                   <!-- Dark overlay for readability -->
                   <div class="absolute inset-0 bg-black/75" />
- 
+
                   <div class="absolute top-4 left-4 sm:top-6 sm:left-6 z-10">
                     <Badge> {{ product.rank }} </Badge>
                   </div>
                 </div>
               </CardHeader>
- 
+
               <CardContent class="px-1">
                 <CardTitle>{{ product.name }}</CardTitle>
                 <CardDescription class="text-sm text-muted-foreground mt-1">
                   {{ product.notes }}
                 </CardDescription>
- 
+
                 <div class="flex items-center justify-between mt-3">
-                  <span class="font-medium">{{
-                    product.price
-                  }}</span>
+                  <span class="font-medium">₱{{ product.price }}</span>
                   <span class="flex items-center gap-1 text-sm">
                     <Icon
                       icon="lucide:star"
@@ -213,14 +213,16 @@ export default {
                   </span>
                 </div>
               </CardContent>
- 
+
               <CardFooter class="px-4">
-                <Button size="lg" class="w-full"> Add to Cart </Button>
+                <Button size="lg" class="w-full" @click="addToCart(product)">
+                  Add to Cart
+                </Button>
               </CardFooter>
             </Card>
           </CarouselItem>
         </CarouselContent>
- 
+
         <CarouselPrevious
           class="left-0 h-9 w-9 border border-white/15 bg-black/60 backdrop-blur-sm hover:bg-black/80"
         />

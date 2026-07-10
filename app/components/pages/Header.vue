@@ -10,11 +10,18 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
 import {
   Collapsible,
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { cart } from "@/components/pages/landing/store"
 
 export default {
   components: {
@@ -30,25 +37,35 @@ export default {
     Collapsible,
     CollapsibleContent,
     CollapsibleTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuTrigger,
   },
   data() {
     return {
-      cartCount: 3,
-      wishlistCount: 5,
       mobileMenuOpen: false,
       mobileSearchOpen: false,
     };
   },
+  computed: {
+    cartItems() {
+      return cart.items;
+    },
+    cartCount() {
+      return cart.count.value;
+    },
+  },
   methods: {
-    // Each Collapsible reports its own open state; when one opens we close
-    // the other so they never fight for space on small screens.
-    setMobileMenuOpen(open:any) {
+    setMobileMenuOpen(open: any) {
       this.mobileMenuOpen = open;
       if (open) this.mobileSearchOpen = false;
     },
-    setMobileSearchOpen(open:any) {
+    setMobileSearchOpen(open: any) {
       this.mobileSearchOpen = open;
       if (open) this.mobileMenuOpen = false;
+    },
+    removeFromCart(id:any) {
+      cart.removeFromCart(id);
     },
   },
 };
@@ -57,11 +74,16 @@ export default {
 <template>
   <div class="fixed top-0 left-0 w-full z-50">
     <!-- Announcement bar -->
-    <div class="text-[10px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] uppercase bg-(--background)">
+    <div
+      class="text-[10px] sm:text-[11px] tracking-[0.14em] sm:tracking-[0.18em] uppercase bg-(--background)"
+    >
       <div
         class="mx-auto max-w-[1440px] px-4 sm:px-6 h-8 sm:h-9 flex items-center justify-center gap-2 text-center"
       >
-        <Icon icon="lucide:sparkles" class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B8935F] shrink-0" />
+        <Icon
+          icon="lucide:sparkles"
+          class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#B8935F] shrink-0"
+        />
         <span class="truncate sm:whitespace-normal"
           >Complimentary shipping over ₱3,500 · Discover your signature
           scent</span
@@ -73,7 +95,6 @@ export default {
     <div class="mx-auto max-w-full px-4 sm:px-6 bg-(--background)">
       <div class="h-16 sm:h-20 flex items-center justify-between gap-2">
         <div class="flex items-center gap-6 min-w-0">
-          <!-- Mobile menu trigger -->
           <Button
             variant="ghost"
             size="icon"
@@ -95,13 +116,12 @@ export default {
             CTRL Collection
           </a>
 
-          <!-- Desktop nav links -->
           <NavigationMenu class="hidden lg:block">
             <NavigationMenuList class="gap-1">
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href="#"
-                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
                 >
                   Women
                 </NavigationMenuLink>
@@ -110,7 +130,7 @@ export default {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href="#"
-                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
                 >
                   Men
                 </NavigationMenuLink>
@@ -119,7 +139,7 @@ export default {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href="#"
-                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
                 >
                   Unisex
                 </NavigationMenuLink>
@@ -128,7 +148,7 @@ export default {
               <NavigationMenuItem>
                 <NavigationMenuLink
                   href="#"
-                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+                  class="inline-flex items-center px-4 py-2 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
                 >
                   Collections
                 </NavigationMenuLink>
@@ -138,7 +158,6 @@ export default {
         </div>
 
         <div class="flex items-center gap-1 sm:gap-3 shrink-0">
-          <!-- Search: full input on desktop -->
           <form class="hidden md:block mx-w-xl mx-auto">
             <div class="relative">
               <Icon
@@ -154,7 +173,6 @@ export default {
             </div>
           </form>
 
-          <!-- Search: icon toggle on mobile/tablet -->
           <Button
             variant="ghost"
             size="icon"
@@ -170,16 +188,91 @@ export default {
             Shop Now
           </Button>
 
-          <Button variant="ghost" size="icon" class="relative h-10 w-10">
-            <Icon icon="lucide:shopping-bag" class="w-5 h-5" />
+          <DropdownMenu>
+            <DropdownMenuTrigger as-child>
+              <Button
+                variant="ghost"
+                size="icon"
+                class="relative h-10 w-10"
+                aria-label="Open cart"
+              >
+                <Icon icon="lucide:shopping-cart" class="w-5 h-5" />
 
-            <span
-              v-if="cartCount"
-              class="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-black text-[9px] text-white"
+                <Badge
+                  variant="secondary"
+                  v-if="cartCount"
+                  class="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full text-[9px]"
+                >
+                  {{ cartItems.length }}
+                </Badge>
+              </Button>
+            </DropdownMenuTrigger>
+
+            <DropdownMenuContent
+              align="end"
+              :side-offset="12"
+              class="w-80 sm:w-96 p-0 rounded-2xl overflow-hidden bg-(--background)"
             >
-              {{ cartCount }}
-            </span>
-          </Button>
+              <div class="px-4 py-3 border-b border-black/5 flex justify-between items-center">
+                <p class="text-sm tracking-[0.08em]">
+                  Your Cart
+                  <span class="text-gray-500 normal-case tracking-normal">
+                    ({{ cartItems.length }})
+                  </span>
+                </p>
+                <Button v-if="cartItems.length != 0" variant="link" class="text-xs normal-case tracking-normal text-[#B8935F]">
+                  View Cart
+                  <!-- <Icon icon="lucide:arrow-right" class="w-4 h-4" /> -->
+                </Button>
+              </div>
+
+              <div v-if="cartItems.length" class="max-h-72 overflow-y-auto">
+                <div
+                  v-for="item in cartItems"
+                  :key="item.id"
+                  class="flex items-center gap-3 px-4 py-3 border-b border-black/5 last:border-b-0"
+                >
+                  <img
+                    :src="item.image"
+                    :alt="item.name"
+                    class="w-14 h-14 rounded-lg object-cover shrink-0 bg-[#F5F1EB]"
+                  />
+
+                  <div class="min-w-0 flex-1">
+                    <p class="text-sm truncate">{{ item.name }}</p>
+                    <p class="text-xs text-gray-500">{{ item.size }}</p>
+                    <p class="text-xs text-gray-500">Qty: {{ item.qty }}</p>
+                  </div>
+
+                  <div class="flex flex-col items-end gap-1 shrink-0">
+                    <span class="text-sm">₱{{ item.price }}</span>
+                    <Button
+                      size="icon"
+                      variant="link"
+                      class="text-red-400 hover:text-red-700 transition-colors"
+                      @click.stop="removeFromCart(item.id)"
+                    >
+                      <Icon icon="lucide:trash" class="w-3.5 h-3.5" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+
+              <div v-else class="px-4 py-8 text-center">
+                <Icon
+                  icon="lucide:shopping-cart"
+                  class="w-8 h-8 mx-auto text-gray-300 mb-2"
+                />
+                <p class="text-sm text-gray-500">Your cart is empty</p>
+              </div>
+
+              <div v-if="cartItems.length" class="px-4 py-3 border-t border-black/5 space-y-3">
+                <Button variant="default" class="w-full rounded-full">
+                  Checkout
+                </Button>
+              </div>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
           <Button variant="ghost" size="icon" class="hidden sm:inline-flex">
             <Icon icon="lucide:user" class="w-5 h-5" />
@@ -215,25 +308,25 @@ export default {
         >
           <a
             href="#"
-            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
           >
             Women
           </a>
           <a
             href="#"
-            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
           >
             Men
           </a>
           <a
             href="#"
-            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
           >
             Unisex
           </a>
           <a
             href="#"
-            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md hover:bg-[#F1E9DD] transition-colors"
+            class="px-2 py-2.5 text-[13px] tracking-[0.08em] uppercase rounded-md transition-colors"
           >
             Collections
           </a>

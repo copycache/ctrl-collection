@@ -155,7 +155,7 @@ export default {
               </CardTitle>
               <CardDescription>
                 <div
-                  class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6"
+                  class="flex justify-between gap-4 mb-6"
                 >
                   <div>
                     <p
@@ -166,7 +166,7 @@ export default {
                   </div>
                   <Button
                     variant="link"
-                    class="text-muted-foreground text-xs self-start sm:self-auto -ml-4 sm:ml-0"
+                    class="text-[#B8935F] text-xs self-start sm:self-auto -ml-4 sm:ml-0"
                   >
                     View all
                   </Button>
