@@ -129,7 +129,7 @@ export default {
               >
                 <Button size="lg"> Add to Cart </Button>
 
-                <Button variant="link" class="text-muted-foreground">
+                <Button variant="link" class="text-[#B8935F]">
                   View Details
                   <Icon icon="lucide:arrow-right" class="w-4 h-4" />
                 </Button>
@@ -191,7 +191,7 @@ export default {
 
                     <div class="flex flex-col items-end gap-1 shrink-0">
                       <span class="text-sm font-semibold">
-                        ${{ item.price }}
+                        ₱{{ item.price }}
                       </span>
                       <span
                         class="flex items-center gap-1 text-xs text-muted-foreground"
