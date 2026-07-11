@@ -43,7 +43,7 @@ export default {
             THE COLLECTION
           </p>
           <h1
-            class="text-3xl sm:text-4xl lg:text-5xl font-serif tracking-wide mt-2"
+            class="text-2xl sm:text-3xl lg:text-4xl font-serif tracking-wide mt-2"
           >
             Signature Collections
           </h1>
