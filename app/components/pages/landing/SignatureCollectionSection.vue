@@ -211,7 +211,7 @@ export default {
  
         <div class="lg:col-start-4 lg:row-start-3 lg:row-span-2">
           <div
-            class="relative h-[220px] sm:h-[200px] lg:h-full overflow-hidden rounded-3xl p-6 sm:p-8 lg:p-12 bg-cover bg-center"
+            class="relative h-full overflow-hidden rounded-3xl p-6 sm:p-8 lg:p-12 bg-cover bg-center"
           >
             <div class="absolute inset-0 w-full h-full object-cover bg-[#B8935F]" />
             <div class="absolute inset-0 bg-black/75" />
@@ -231,7 +231,7 @@ export default {
               </p>
             </div>
  
-            <div class="absolute bottom-6 left-6 sm:bottom-8 sm:left-9 z-10">
+            <div class="absolute bottom-1 left-6 sm:bottom-8 sm:left-9 z-10">
               <Button variant="default"> Create Set </Button>
             </div>
           </div>

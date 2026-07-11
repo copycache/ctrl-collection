@@ -29,7 +29,7 @@ export default {
 <template>
   <div>
     <div
-      class="mx-auto max-w-container px-4 sm:px-6 lg:px-5 pt-16 sm:pt-20 pb-12 lg:pb-20"
+      class="mx-auto max-w-container bg-muted-foreground/5 px-4 sm:px-6 lg:px-5 pt-16 sm:pt-20 pb-12 lg:pb-20"
     >
       <!-- Header -->
       <div class="flex justify-center text-center">

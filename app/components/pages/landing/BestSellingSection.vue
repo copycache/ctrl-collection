@@ -197,8 +197,8 @@ export default {
               </CardHeader>
 
               <CardContent class="px-1">
-                <CardTitle>{{ product.name }}</CardTitle>
-                <CardDescription class="text-sm text-muted-foreground mt-1">
+                <CardTitle class="line-clamp-1">{{ product.name }}</CardTitle>
+                <CardDescription class="text-sm line-clamp-1 mt-1">
                   {{ product.notes }}
                 </CardDescription>
 
