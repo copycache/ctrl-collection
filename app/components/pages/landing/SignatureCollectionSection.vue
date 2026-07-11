@@ -29,11 +29,10 @@ export default {
 </script>
 
 <template>
-  <div class="min-h-screen">
+  <div>
     <div
-      class="mx-auto max-w-container min-h-screen px-4 sm:px-6 lg:px-5 pt-16 sm:pt-20 lg:pt-30 pb-12 lg:pb-20"
+      class="mx-auto max-w-container px-4 sm:px-6 lg:px-5 pt-16 sm:pt-20 lg:pt-30 pb-12 lg:pb-20"
     >
-      <!-- Header -->
       <div
         class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6"
       >
@@ -58,7 +57,7 @@ export default {
         </Button>
       </div>
  
-      <!-- Content grid -->
+      <!-- Content -->
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-4 gap-3 sm:gap-4 lg:gap-2 lg:h-[calc(100vh-15rem)]"
       >
@@ -210,7 +209,6 @@ export default {
           </div>
         </div>
  
-        <!-- Card 5: bottom-right CTA on desktop -->
         <div class="lg:col-start-4 lg:row-start-3 lg:row-span-2">
           <div
             class="relative h-[220px] sm:h-[200px] lg:h-full overflow-hidden rounded-3xl p-6 sm:p-8 lg:p-12 bg-cover bg-center"

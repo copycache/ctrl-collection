@@ -2,12 +2,16 @@
 import HeroSection from "@/components/pages/landing/HeroSection.vue";
 import BestSellingSection from "@/components/pages/landing/BestSellingSection.vue";
 import SignatureCollectionSection from "@/components/pages/landing/SignatureCollectionSection.vue";
+import BrandStory from "~/components/pages/landing/BrandStory.vue";
+import WhyChooseUs from "~/components/pages/landing/WhyChooseUs.vue";
 
 export default {
   components: {
     HeroSection,
     BestSellingSection,
     SignatureCollectionSection,
+    BrandStory,
+    WhyChooseUs,
   },
   data() {
     return {
@@ -41,5 +45,7 @@ export default {
     <HeroSection />
     <SignatureCollectionSection />
     <BestSellingSection />
+    <BrandStory />
+    <WhyChooseUs />
   </div>
 </template>

@@ -15,7 +15,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default {
   data() {
     return {
-      bestsellers: [] as Array<{
+      newarrivals: [] as Array<{
         name: string;
         notes: string;
         price: number;
@@ -41,7 +41,7 @@ export default {
   methods: {
     async fetchBestsellers() {
       try {
-        const bestsellers = [
+        const newarrivals = [
           {
             name: "Nuit Dorée",
             notes: "Oud · Amber · Sandalwood",
@@ -61,9 +61,9 @@ export default {
             rating: 4.7,
           },
         ];
-        this.bestsellers = bestsellers;
+        this.newarrivals = newarrivals;
       } catch (error) {
-        console.error("Error fetching bestsellers:", error);
+        console.error("Error fetching newarrivals:", error);
       }
     },
   },
@@ -161,7 +161,7 @@ export default {
                     <p
                       class="shrink-0 font-['Cormorant_Garamond',_serif] text-lg text-primary tracking-wide"
                     >
-                      Bestsellers
+                      New Arrivals
                     </p>
                   </div>
                   <Button
@@ -174,7 +174,7 @@ export default {
               </CardDescription>
 
               <CardContent class="flex flex-col gap-5 mt-4 px-0">
-                <template v-for="(item, index) in bestsellers" :key="item.name">
+                <template v-for="(item, index) in newarrivals" :key="item.name">
                   <div class="flex items-center gap-4">
                     <Skeleton
                       class="w-14 h-14 sm:w-16 sm:h-16 rounded-lg shrink-0"
@@ -206,7 +206,7 @@ export default {
                   </div>
 
                   <div
-                    v-if="index < bestsellers.length - 1"
+                    v-if="index < newarrivals.length - 1"
                     class="border-t border-white/10"
                   />
                 </template>
